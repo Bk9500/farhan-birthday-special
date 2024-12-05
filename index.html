@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .hidden {
+            display: none;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .emoji {
+            font-size: 50px;
+            margin: 20px;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            animation: float 6s linear infinite;
+        }
+        .balloon:nth-child(2) {
+            background-color: #ffd700;
+            animation-delay: 2s;
+        }
+        .balloon:nth-child(3) {
+            background-color: #7fffd4;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0.8;
+            }
+        }
+        #props {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div id="props">🎉🎈🎂🎁</div>
+    <h1>Welcome</h1>
+    <div id="welcome-props" class="hidden"></div>
+    <div id="name-section" class="hidden">
+        <p>What's your name?</p>
+        <input type="text" id="name-input" placeholder="Enter your name">
+        <button onclick="checkName()">Submit</button>
+    </div>
+    <div id="animated-boy" class="hidden">
+        🤵‍♂️<br>
+        <small>(A charming animated boy winks!)</small>
+        <div class="emoji">✨😊🎉</div>
+    </div>
+    <div id="question-section" class="hidden">
+        <div id="question-1" class="question hidden">
+            <p>Are you a Monkey or a Human?</p>
+            <button onclick="showMonkey()">Monkey</button>
+            <button>Human</button>
+        </div>
+        <div id="monkey-dance" class="hidden">
+            🐒💃🎶
+        </div>
+        <div id="question-2" class="question hidden">
+            <p>Are you stupid or genius?</p>
+            <button onclick="showLaugh()">Stupid</button>
+            <button>Genius</button>
+        </div>
+        <div id="laugh-emoji" class="hidden">
+            😂😂😂
+        </div>
+        <div id="question-3" class="question hidden">
+            <p>Are you a loser or a winner?</p>
+            <button onclick="showThumbsDown()">Loser</button>
+            <button>Winner</button>
+        </div>
+        <div id="thumbs-down" class="hidden">
+            👎👎👎
+        </div>
+        <div id="question-4" class="question hidden">
+            <p>Write the most beautiful, gorgeous, hottest, and beautiful lady's name here:</p>
+            <input type="text" id="lady-name-input" placeholder="Enter her name">
+            <button onclick="checkLadyName()">Submit</button>
+        </div>
+        <div id="heart-emojis" class="hidden">
+            ❤️❤️❤️❤️❤️
+        </div>
+        <div id="question-5" class="question hidden">
+            <p>What's the date today?</p>
+            <button onclick="checkDate(true)">6th of December</button>
+            <button onclick="checkDate(false)">5th of December</button>
+        </div>
+    </div>
+    <div id="birthday-message" class="hidden">
+        <h2>OOH It's your birthday!</h2>
+        <button onclick="showFinalMessage(true)">Yes</button>
+        <button>No</button>
+    </div>
+    <div id="final-message" class="hidden">
+        <h1>Happy Birthday World Handsome Hottest Beautiful Boy My Charming Fiance Asli Farhan Haider 🎂❤️</h1>
+        🎉🎈🎂🎁
+        <div>
+            <button onclick="showSurprise()">Click here for your surprise</button>
+        </div>
+    </div>
+    <div id="surprise" class="hidden">
+        <h1>Tere Sang Yara Khush Rang Bahara</h1>
+        😘💋
+    </div>
+    <script>
+        document.getElementById("welcome-props").classList.remove("hidden");
+        setTimeout(() => {
+            document.getElementById("name-section").classList.remove("hidden");
+        }, 1000);
+
+        function checkName() {
+            const name = document.getElementById("name-input").value;
+            if (name.toLowerCase() === "farhan") {
+                document.getElementById("name-section").classList.add("hidden");
+                document.getElementById("animated-boy").classList.remove("hidden");
+                setTimeout(() => {
+                    document.getElementById("animated-boy").classList.add("hidden");
+                    document.getElementById("question-section").classList.remove("hidden");
+                    document.getElementById("question-1").classList.remove("hidden");
+                }, 1000);
+            }
+        }
+
+        function showMonkey() {
+            document.getElementById("question-1").classList.add("hidden");
+            document.getElementById("monkey-dance").classList.remove("hidden");
+            setTimeout(() => {
+                document.getElementById("monkey-dance").classList.add("hidden");
+                document.getElementById("question-2").classList.remove("hidden");
+            }, 1000);
+        }
+
+        function showLaugh() {
+            document.getElementById("question-2").classList.add("hidden");
+            document.getElementById("laugh-emoji").classList.remove("hidden");
+            setTimeout(() => {
+                document.getElementById("laugh-emoji").classList.add("hidden");
+                document.getElementById("question-3").classList.remove("hidden");
+            }, 1000);
+        }
+
+        function showThumbsDown() {
+            document.getElementById("question-3").classList.add("hidden");
+            document.getElementById("thumbs-down").classList.remove("hidden");
+            setTimeout(() => {
+                document.getElementById("thumbs-down").classList.add("hidden");
+                document.getElementById("question-4").classList.remove("hidden");
+            }, 1000);
+        }
+
+        function checkLadyName() {
+            const name = document.getElementById("lady-name-input").value;
+            if (name.toLowerCase() === "zanjbeel kousam") {
+                document.getElementById("question-4").classList.add("hidden");
+                document.getElementById("heart-emojis").classList.remove("hidden");
+                setTimeout(() => {
+                    document.getElementById("heart-emojis").classList.add("hidden");
+                    document.getElementById("question-5").classList.remove("hidden");
+                }, 1000);
+            }
+        }
+
+        function checkDate(correct) {
+            if (correct) {
+                document.getElementById("question-section").classList.add("hidden");
+                document.getElementById("birthday-message").classList.remove("hidden");
+            }
+        }
+
+        function showFinalMessage(correct) {
+            if (correct) {
+                document.getElementById("birthday-message").classList.add("hidden");
+                document.getElementById("final-message").classList.remove("hidden");
+            }
+        }
+
+        function showSurprise() {
+            document.getElementById("final-message").classList.add("hidden");
+            document.getElementById("surprise").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
